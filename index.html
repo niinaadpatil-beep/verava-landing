@@ -1968,7 +1968,7 @@ async function submitDemo() {
   const desc     = document.getElementById('f-desc').value.trim();
 
   try {
-    const res = await fetch('/api/dispatch-call', {
+    const res = await fetch('https://verava-dashboard.vercel.app/api/dispatch-call', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, business, industry, description: desc })
