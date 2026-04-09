@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support — Verava AI Voice Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Figtree:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0b1120;--n2:#111827;--n3:#1a2540;--n4:#1e2d45;--n5:#263352;
+  --teal:#0fb8a4;--t2:#14d1bb;--tdim:rgba(15,184,164,0.12);--tglow:rgba(15,184,164,0.25);
+  --border:rgba(255,255,255,0.07);--b2:rgba(255,255,255,0.12);
+  --tx:#e8edf5;--tx2:#94a3b8;--tx3:#64748b;
+  --green:#34d399;--amber:#fbbf24;--indigo:#818cf8;
+  --r:10px;--rl:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Figtree',sans-serif;background:var(--navy);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Syne',sans-serif}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--n5);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px var(--tglow)}50%{box-shadow:0 0 40px rgba(15,184,164,0.45)}}
+.fu{animation:fadeUp 0.5s ease both}
+.btn-p{background:linear-gradient(135deg,var(--teal),var(--t2));color:var(--navy);border:none;border-radius:var(--r);font-weight:700;font-family:'Figtree',sans-serif;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-p:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 8px 28px var(--tglow)}
+.btn-g{background:transparent;border:1px solid var(--b2);color:var(--tx2);border-radius:var(--r);cursor:pointer;font-family:'Figtree',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-g:hover{background:rgba(255,255,255,0.05);color:var(--tx);border-color:var(--teal)}
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.1}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,var(--teal),transparent 70%);top:-150px;left:-150px}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,var(--indigo),transparent 70%);bottom:-100px;right:-100px}
+nav{position:sticky;top:0;z-index:1000;background:rgba(11,17,32,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--teal),var(--t2));border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--tglow);animation:glow 3s ease-in-out infinite;flex-shrink:0}
+.logo-icon span{color:var(--navy);font-weight:800;font-size:17px;font-family:'Syne',sans-serif}
+.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--tx)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--tx2);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--teal)}
+.page-hero{position:relative;z-index:1;padding:80px 24px 60px;text-align:center}
+.page-tag{display:inline-flex;align-items:center;gap:7px;background:var(--tdim);border:1px solid rgba(15,184,164,0.2);border-radius:40px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--t2);margin-bottom:20px;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+.page-title{font-size:clamp(34px,5.5vw,56px);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
+.page-title .accent{color:var(--teal)}
+.page-sub{font-size:16px;color:var(--tx2);max-width:500px;margin:0 auto 32px;line-height:1.65}
+.search-wrap{max-width:520px;margin:0 auto;position:relative}
+.search-wrap input{width:100%;padding:14px 18px 14px 46px;background:var(--n3);border:1px solid var(--border);border-radius:12px;font-size:14px;color:var(--tx);outline:none;font-family:'Figtree',sans-serif;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--teal)}
+.search-wrap input::placeholder{color:var(--tx3)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--tx3)}
+.section{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 24px 80px}
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.cat-tab{padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--tx3);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Figtree',sans-serif}
+.cat-tab:hover{border-color:rgba(15,184,164,0.3);color:var(--tx)}
+.cat-tab.active{background:var(--tdim);border-color:var(--teal);color:var(--t2)}
+.faq-group{margin-bottom:36px}
+.faq-group-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.faq-group-title::after{content:'';flex:1;height:1px;background:rgba(15,184,164,0.15)}
+.faq-item{background:var(--n3);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:rgba(15,184,164,0.2)}
+.faq-q{padding:16px 20px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none;color:var(--tx)}
+.faq-arrow{color:var(--teal);font-size:20px;transition:transform .3s;flex-shrink:0;line-height:1}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.faq-a.open{max-height:400px;padding:0 20px 16px}
+.faq-q.open .faq-arrow{transform:rotate(45deg)}
+.faq-a p{font-size:13px;color:var(--tx2);line-height:1.7}
+.faq-a a{color:var(--teal);text-decoration:none}
+.faq-a a:hover{text-decoration:underline}
+.contact-strip{background:linear-gradient(135deg,rgba(15,184,164,0.08),rgba(15,184,164,0.03));border:1px solid rgba(15,184,164,0.2);border-radius:18px;padding:36px 32px;text-align:center;margin-bottom:48px}
+.contact-strip h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.contact-strip p{font-size:14px;color:var(--tx2);margin-bottom:24px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.6}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:640px;margin:0 auto}
+.contact-card{background:var(--n3);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:left;text-decoration:none;display:flex;align-items:center;gap:14px;transition:all .2s}
+.contact-card:hover{border-color:rgba(15,184,164,0.3);transform:translateY(-2px)}
+.cc-icon{width:40px;height:40px;border-radius:10px;background:var(--tdim);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cc-label{font-size:10px;color:var(--tx3);font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:3px}
+.cc-val{font-size:13px;font-weight:700;color:var(--tx)}
+.cc-hint{font-size:11px;color:var(--tx3);margin-top:2px}
+footer{background:var(--n2);border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+.footer-links-row{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:16px}
+.footer-links-row a{color:var(--tx3);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-links-row a:hover{color:var(--teal)}
+.footer-copy{font-size:12px;color:var(--tx3)}
+@media(max-width:768px){nav{padding:0 16px}.nav-links{display:none}.page-hero{padding:60px 16px 40px}.contact-strip{padding:24px 16px}}
+</style>
+</head>
+<body>
+<div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <div class="logo-icon"><span>V</span></div>
+    <div><div class="logo-text">Verava</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#how">How It Works</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/support" class="active">Support</a></li>
+  </ul>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <button class="btn-g" style="padding:8px 18px;font-size:13px;font-weight:600;" onclick="window.location.href='https://app.verava.in'">Login</button>
+    <button class="btn-p" style="padding:8px 18px;font-size:13px;" onclick="window.location.href='tel:+918010028090'">Book Demo</button>
+  </div>
+</nav>
+
+<div class="page-hero fu">
+  <div class="page-tag">Support</div>
+  <h1 class="page-title">How can we <span class="accent">help you?</span></h1>
+  <p class="page-sub">Find answers to common questions about Vera, your plan, billing, and setup.</p>
+  <div class="search-wrap">
+    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Search questions..." oninput="filterFAQs(this.value)"/>
+  </div>
+</div>
+
+<div class="section">
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat('all',this)">All</button>
+    <button class="cat-tab" onclick="filterCat('general',this)">General</button>
+    <button class="cat-tab" onclick="filterCat('setup',this)">Setup</button>
+    <button class="cat-tab" onclick="filterCat('billing',this)">Billing</button>
+    <button class="cat-tab" onclick="filterCat('vera',this)">About Vera</button>
+    <button class="cat-tab" onclick="filterCat('technical',this)">Technical</button>
+  </div>
+
+  <!-- GENERAL -->
+  <div class="faq-group" data-cat="general">
+    <div class="faq-group-title">General</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What is Verava and what does Vera do? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Verava is an AI voice agent platform built for Indian businesses. Vera is your AI Business Representative — she answers every inbound call 24/7, handles appointment bookings, answers FAQs, qualifies leads, and gives your callers a professional experience without any human staff involved. She speaks Hindi, English, and Hinglish naturally.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Is Vera a robot or a real person? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Vera is an AI — but she speaks naturally and is trained specifically for your business, your tone, and your services. Most callers don't ask. If a caller directly asks whether they're speaking to an AI, Vera is designed to be transparent. We never deceive.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Which industries does Verava work for? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Healthcare (clinics, diagnostic centers, hospitals), Education (coaching institutes, schools, colleges), Real Estate (builders, brokers, developers), Showrooms (auto, jewellery, retail), and professional services (CA firms, law firms, consultancies). If your business gets phone calls, Vera can handle them.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What languages does Vera speak? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Vera speaks English, Hindi, and Hinglish — and adapts to however the caller speaks. If a caller starts in Hindi, Vera responds in Hindi. Regional language support (Marathi, etc.) is available on request.</p></div>
+    </div>
+  </div>
+
+  <!-- SETUP -->
+  <div class="faq-group" data-cat="setup">
+    <div class="faq-group-title">Setup & Onboarding</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How long does setup take? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Typically 3–5 business days from the time we receive your business details. We build your custom Vera — name, voice, script, FAQs — and test it before going live. You review and approve before Vera takes a single call.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What information do you need from me to set up Vera? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Your business name, services you offer, pricing (if you want Vera to share it), working hours, location, how you want appointments booked, and 10–15 common questions your callers ask. We guide you through this during onboarding — it takes about 30 minutes.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Can I update Vera's script or add new services later? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Yes. You can request script updates, new FAQs, pricing changes, or service additions at any time. Minor updates are handled within 24–48 hours. Major re-training takes 2–3 business days. Contact us at <a href="mailto:support@verava.in">support@verava.in</a>.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Do I need any technical knowledge to use Verava? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>No. You don't need to write code, configure anything technical, or manage any software. We handle the entire setup. You give us your business details, we build Vera, and you start receiving handled calls. Your only interface is the Verava dashboard — which is as simple as reading a table.</p></div>
+    </div>
+  </div>
+
+  <!-- BILLING -->
+  <div class="faq-group" data-cat="billing">
+    <div class="faq-group-title">Billing & Plans</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What does the ₹3,999 setup fee cover? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>It covers everything in your custom Vera build — persona creation, voice configuration, script writing, FAQ training, and full onboarding support. It's a one-time fee. You pay it once, never again, regardless of how long you stay on the platform.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What happens if I use more minutes than my plan includes? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>No calls get dropped. Vera keeps answering. Extra minutes are billed at your plan's per-minute rate — ₹9/min on Starter, ₹8.50/min on Growth, ₹8/min on Pro. You'll see usage in real time on your dashboard.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Do unused minutes roll over? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Yes. Unused minutes from your monthly plan roll over to the next month. They don't expire.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Is there a contract or minimum commitment? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>No long-term contracts. All plans are month-to-month. The setup fee is one-time regardless of tenure. We're confident enough in the product that we don't need to lock you in.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How do I upgrade or downgrade my plan? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Contact us at <a href="mailto:billing@verava.in">billing@verava.in</a> or WhatsApp Ninaad directly. Plan changes take effect from the next billing cycle. There's no penalty for changing plans.</p></div>
+    </div>
+  </div>
+
+  <!-- VERA -->
+  <div class="faq-group" data-cat="vera">
+    <div class="faq-group-title">About Vera</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Will my customers know they're talking to an AI? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Vera speaks naturally and is trained to handle conversations fluently. Most callers don't ask. If a caller directly asks, Vera is transparent. We never deceive — but we do deliver a genuinely good experience that reflects well on your business.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Can Vera transfer a call to a human if needed? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Yes. Vera can be configured to transfer calls to a specific number when a caller requests a human, or when a conversation reaches a point that requires human judgment. This is set up during onboarding based on your preference.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Does Vera work on weekends and holidays? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Yes. Vera is available 24/7/365 — weekends, public holidays, nights. She never takes a day off. This is one of the core reasons businesses use Verava — eliminating the gap between when customers call and when staff is available.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What can I see in the dashboard? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Every call your number receives — caller name, number, what they asked about, call duration, full transcript, AI summary, sentiment score, call recording (if enabled), and outcome (appointment booked, callback scheduled, etc.). Everything is visible in real time.</p></div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL -->
+  <div class="faq-group" data-cat="technical">
+    <div class="faq-group-title">Technical</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Do I need to change my existing phone number? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>No. We work with your existing business number. The setup process involves configuring call forwarding so Vera picks up when your line is busy or unanswered — or as your primary handler. We walk you through this during onboarding.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Where is my call data stored? Is it secure? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Call data is stored securely on encrypted servers. We don't share your data or your clients' data with any third parties. You can view and delete call records from your dashboard at any time. See our <a href="/privacy">Privacy Policy</a> for full details.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What happens if Vera goes down or there's an outage? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>We maintain high uptime SLAs. In the rare event of an issue, your calls will either fall through to your existing number or receive a configured fallback message. Growth and Pro plan clients receive dedicated support with faster response times.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Can I integrate Vera with my existing CRM or calendar? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Yes. Vera supports Google Calendar for appointment booking. CRM integrations (Google Sheets, Airtable, HubSpot, etc.) are available. Contact us at <a href="mailto:support@verava.in">support@verava.in</a> to discuss your specific integration needs.</p></div>
+    </div>
+  </div>
+
+  <!-- Still need help -->
+  <div class="contact-strip">
+    <h3>Still have a question?</h3>
+    <p>Reach Ninaad directly — he responds fast and will personally sort you out.</p>
+    <div class="contact-cards">
+      <a href="tel:+918010028090" class="contact-card">
+        <div class="cc-icon">📞</div>
+        <div>
+          <div class="cc-label">Call</div>
+          <div class="cc-val">+91 80100 28090</div>
+          <div class="cc-hint">Tap to call directly</div>
+        </div>
+      </a>
+      <a href="mailto:support@verava.in" class="contact-card">
+        <div class="cc-icon">✉️</div>
+        <div>
+          <div class="cc-label">Email</div>
+          <div class="cc-val">support@verava.in</div>
+          <div class="cc-hint">Reply within 24 hours</div>
+        </div>
+      </a>
+      <a href="https://wa.me/918010028090" target="_blank" class="contact-card">
+        <div class="cc-icon">💬</div>
+        <div>
+          <div class="cc-label">WhatsApp</div>
+          <div class="cc-val">WhatsApp Us</div>
+          <div class="cc-hint">Fastest response</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links-row">
+    <a href="/">Home</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/support">Support</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="https://app.verava.in">Client Login</a>
+  </div>
+  <div class="footer-copy">© 2026 Verava. All rights reserved. Made in India 🇮🇳</div>
+</footer>
+
+<script>
+function toggle(el) {
+  const a = el.nextElementSibling;
+  const open = a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(x => x.classList.remove('open'));
+  if (!open) { a.classList.add('open'); el.classList.add('open'); }
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.faq-group').forEach(g => {
+    g.style.display = (cat === 'all' || g.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+function filterFAQs(query) {
+  const q = query.toLowerCase().trim();
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = (!q || text.includes(q)) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.faq-group').forEach(g => {
+    const visible = [...g.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+    g.style.display = visible ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
