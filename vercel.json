@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/support", "destination": "/support.html" },
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms",   "destination": "/terms.html" }
-  ]
-}
