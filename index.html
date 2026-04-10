@@ -457,28 +457,92 @@ footer{position:relative;z-index:1;padding:60px 40px 32px;border-top:1px solid v
 </section>
 
 <!-- PRICING -->
-<section class="contact-pricing-section" id="pricing">
-  <div class="contact-pricing-inner">
-    <div class="contact-pricing-card">
-      <div class="cp-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--teal)"><circle cx="12" cy="12" r="10"/></svg>Pricing</div>
-      <div class="cp-title">Pricing built around<br>your business.</div>
-      <div class="cp-sub">Every business is different — call volume, use case, industry. We build a plan that fits your exact needs and budget. No one-size-fits-all.</div>
-      <div class="cp-features">
-        <div class="cp-feature"><div class="cp-feature-dot"></div>Inbound answering plans</div>
-        <div class="cp-feature"><div class="cp-feature-dot"></div>Outbound reminder packages</div>
-        <div class="cp-feature"><div class="cp-feature-dot"></div>Outbound sales campaigns</div>
-        <div class="cp-feature"><div class="cp-feature-dot"></div>Month-to-month · No lock-in</div>
-        <div class="cp-feature"><div class="cp-feature-dot"></div>Free demo before you pay</div>
-      </div>
-      <div class="cp-ctas">
-        <button class="btn-p" style="padding:14px 28px;font-size:15px;" onclick="openContact()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.66A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
-          Get a Custom Quote
-        </button>
-        <button class="btn-g" style="padding:14px 24px;font-size:15px;" onclick="openContact()">Talk to Ninaad <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-      </div>
-      <div class="cp-note">Free 15-minute demo call · No credit card required · Live in 24 hours</div>
+<section style="padding:100px 0;background:var(--n2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" id="pricing">
+  <div style="max-width:1060px;margin:0 auto;padding:0 24px;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:56px;">
+      <div class="section-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--teal)"><circle cx="12" cy="12" r="10"/></svg>Pricing</div>
+      <h2 class="section-title">Simple. Transparent.<br>No Surprises.</h2>
+      <p class="section-sub" style="margin:0 auto;">One-time setup fee. Then pay only for what you use — per minute, on your plan.</p>
     </div>
+
+    <!-- Setup fee bar -->
+    <div style="background:linear-gradient(135deg,rgba(15,184,164,0.1),rgba(15,184,164,0.04));border:1px solid rgba(15,184,164,0.25);border-radius:14px;padding:20px 28px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--tx);margin-bottom:4px;">One-Time Setup Fee</div>
+        <div style="font-size:13px;color:var(--tx2);line-height:1.5;">Custom Vera build — name, voice, script, FAQs, onboarding. Paid once, never again. Live in 3–5 days.</div>
+      </div>
+      <div style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--teal);white-space:nowrap;">₹3,999 <span style="font-size:13px;font-weight:500;color:var(--tx2);">one-time</span></div>
+    </div>
+
+    <!-- Plan cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-bottom:32px;">
+
+      <!-- Starter -->
+      <div style="background:var(--n3);border:1px solid var(--border);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(15,184,164,0.3)'" onmouseout="this.style.transform='none';this.style.borderColor='var(--border)'">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px;">Starter</div>
+        <div style="font-size:13px;color:var(--tx2);margin-bottom:20px;line-height:1.5;">Solo clinics, individual tutors, and single-location small businesses.</div>
+        <div style="font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--tx);line-height:1;margin-bottom:4px;"><sup style="font-size:18px;">₹</sup>4,999<sub style="font-size:14px;font-weight:400;color:var(--tx2);">/mo</sub></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);margin:10px 0 4px;">500 minutes included</div>
+        <div style="font-size:11px;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:24px;">Extra mins @ ₹9/min · ~8–10 calls/day</div>
+        <div style="height:1px;background:var(--border);margin-bottom:20px;"></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:24px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Custom Vera persona</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> 24/7 inbound call handling</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Appointment booking & FAQs</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Call transcripts & summaries</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Live dashboard</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx3);"><span style="color:var(--tx3);flex-shrink:0;">—</span> Smart Analytics (add-on)</li>
+        </ul>
+        <button class="btn-g" style="padding:13px;font-size:13px;font-weight:700;letter-spacing:1px;border-radius:10px;width:100%;" onclick="openContact()">Get Started</button>
+      </div>
+
+      <!-- Growth — featured -->
+      <div style="background:linear-gradient(145deg,#0f2535,#0a2520);border:1px solid var(--teal);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:transform .25s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--teal);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;padding:5px 18px;border-radius:20px;white-space:nowrap;">MOST POPULAR</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px;">Growth</div>
+        <div style="font-size:13px;color:var(--tx2);margin-bottom:20px;line-height:1.5;">Coaching institutes, mid-size clinics, and growing businesses.</div>
+        <div style="font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--tx);line-height:1;margin-bottom:4px;"><sup style="font-size:18px;">₹</sup>11,999<sub style="font-size:14px;font-weight:400;color:var(--tx2);">/mo</sub></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);margin:10px 0 4px;">1,500 minutes included</div>
+        <div style="font-size:11px;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:24px;">Extra mins @ ₹8.50/min · ~25–30 calls/day</div>
+        <div style="height:1px;background:rgba(255,255,255,0.07);margin-bottom:20px;"></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:24px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Everything in Starter</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Higher call volume capacity</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Priority email support</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx3);"><span style="color:var(--tx3);flex-shrink:0;">—</span> Smart Analytics (add-on)</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx3);"><span style="color:var(--tx3);flex-shrink:0;">—</span> WhatsApp Follow-up (add-on)</li>
+        </ul>
+        <button class="btn-p" style="padding:13px;font-size:13px;font-weight:700;letter-spacing:1px;border-radius:10px;width:100%;justify-content:center;" onclick="openContact()">Get Started</button>
+      </div>
+
+      <!-- Pro -->
+      <div style="background:var(--n3);border:1px solid var(--border);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(15,184,164,0.3)'" onmouseout="this.style.transform='none';this.style.borderColor='var(--border)'">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--tx3);margin-bottom:6px;">Pro</div>
+        <div style="font-size:13px;color:var(--tx2);margin-bottom:20px;line-height:1.5;">Diagnostic centers, real estate firms, schools, high-volume operations.</div>
+        <div style="font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--tx);line-height:1;margin-bottom:4px;"><sup style="font-size:18px;">₹</sup>26,999<sub style="font-size:14px;font-weight:400;color:var(--tx2);">/mo</sub></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);margin:10px 0 4px;">3,500 minutes included</div>
+        <div style="font-size:11px;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:24px;">Extra mins @ ₹8/min · ~55–60 calls/day</div>
+        <div style="height:1px;background:var(--border);margin-bottom:20px;"></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:24px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Everything in Growth</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Lead Scoring — included</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx);"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span> Dedicated WhatsApp support</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx3);"><span style="color:var(--tx3);flex-shrink:0;">—</span> Smart Analytics (add-on)</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx3);"><span style="color:var(--tx3);flex-shrink:0;">—</span> WhatsApp Follow-up (add-on)</li>
+        </ul>
+        <button class="btn-g" style="padding:13px;font-size:13px;font-weight:700;letter-spacing:1px;border-radius:10px;width:100%;" onclick="openContact()">Get Started</button>
+      </div>
+
+    </div>
+
+    <!-- Note + full pricing link -->
+    <div style="background:rgba(15,184,164,0.06);border:1px solid rgba(15,184,164,0.15);border-radius:12px;padding:16px 24px;font-size:13px;color:var(--tx2);margin-bottom:20px;line-height:1.7;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <span><strong style="color:var(--teal);">No contracts. No lock-in.</strong> All plans are month-to-month. Unused minutes roll over. Setup fee paid once.</span>
+      <a href="/pricing" style="font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:6px;">See full pricing & add-ons <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
   </div>
 </section>
 
@@ -506,13 +570,13 @@ footer{position:relative;z-index:1;padding:60px 40px 32px;border-top:1px solid v
         </div>
       </a>
 
-      <a href="/cdn-cgi/l/email-protection#e28c8b8b8c8383869283968b8ea2858f838b8ecc818d8f" class="contact-card">
+      <a href="mailto:hello@verava.in" class="contact-card">
         <div class="contact-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-value" style="font-size:14px;"><span class="__cf_email__" data-cfemail="513f38383f303035213025383d11363c30383d7f323e3c">[email&#160;protected]</span></div>
+          <div class="contact-value" style="font-size:14px;">hello@verava.in</div>
           <div class="contact-hint">Reply within 24 hours</div>
         </div>
       </a>
@@ -541,7 +605,7 @@ footer{position:relative;z-index:1;padding:60px 40px 32px;border-top:1px solid v
           Call Now — +91 80100 28090
         </button>
       </a>
-      <div style="margin-top:14px;font-size:12px;color:var(--tx3);">Or email · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84eaededeae5e5e0f4e5f0ede8c4e3e9e5ede8aae7ebe9">[email&#160;protected]</a> · Instagram @verava.ai</div>
+      <div style="margin-top:14px;font-size:12px;color:var(--tx3);">Or email · <a href="mailto:hello@verava.in" style="color:var(--teal);text-decoration:none;">hello@verava.in</a> · Instagram @verava.ai</div>
     </div>
 
   </div>
